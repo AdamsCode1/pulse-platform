@@ -1,8 +1,19 @@
+/* src/app/globals.css */
 @import "tailwindcss";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* PULSE Holographic Color Palette */
+  --pulse-pink: #ff3399;
+  --pulse-purple: #6a39b3;
+  --pulse-blue: #1e90ff;
+  --pulse-cyan: #00ffff;
+  --pulse-light: #f5f5ff;
+  --pulse-dark: #1a1a2e;
+  --pulse-shadow: 0 4px 6px rgba(255, 51, 153, 0.3);
+  --pulse-gradient: linear-gradient(135deg, var(--pulse-pink), var(--pulse-purple), var(--pulse-blue), var(--pulse-cyan));
 }
 
 @theme inline {
@@ -22,5 +33,39 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Montserrat', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom PULSE Styles */
+.pulse-gradient-bg {
+  background: var(--pulse-gradient);
+}
+
+.pulse-shadow {
+  box-shadow: var(--pulse-shadow);
+}
+
+.pulse-text {
+  background: var(--pulse-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
